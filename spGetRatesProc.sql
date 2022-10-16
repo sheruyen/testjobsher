@@ -1,0 +1,26 @@
+--procedure from the task
+CREATE PROCEDURE dbo.spGetRates
+	@A_DATE DATE,
+	@CODE VARCHAR(3) = NULL
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	if (@CODE IS NULL)
+		BEGIN
+
+			SELECT *
+			FROM dbo.R_CURRENCY
+			WHERE A_DATE = @A_DATE
+
+		END
+	else
+		BEGIN
+
+			SELECT *
+			FROM dbo.R_CURRENCY
+			WHERE A_DATE = @A_DATE AND CODE = @CODE
+
+		END
+
+END
